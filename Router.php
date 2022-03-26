@@ -1,0 +1,55 @@
+<?php 
+
+namespace MVC;
+
+class Router {
+
+    public $rutasGET = [];
+    public $rutasPOST = [];
+
+    public function get($url, $fn) {
+        
+        $this->rutasGET[$url] = $fn;
+
+        // debuguear($this->rutasGET);
+    }
+
+    //verifica que la url actual exista
+    public function comprobarRutas() {
+        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+        $method = $_SERVER['REQUEST_METHOD'];
+
+        if($method === 'GET') {
+            $fn = $this->rutasGET[$urlActual] ?? NULL;
+
+            //la url existe y tiene una funcion asociada
+            if($fn) {
+                //requiere la funcion y el (los) arreglo de rutas
+                call_user_func($fn, $this);
+            }else {
+                echo 'ERROR 404: La página no existe...';
+            }
+        }
+    }
+
+    public function render($view, $datos = []) {
+
+        //iterar el arreglo de datos para utilizarlos en la vista
+        foreach($datos as $key => $value) {
+            $$key = $value;
+        }
+
+        ob_start(); //crea un bufer
+        include __DIR__."/views/$view.php";
+        $contenido = ob_get_clean(); //asigna a la variable el buffer y después lo limpia
+        include __DIR__.'/views/layout.php';
+
+        /**El contenido de la vista se almacena en la variable $contenido
+         * se renderiza el layout.php y, en éste, se puede llamar la variable $contenido
+         * para mostrar dinamicamente distintas vistas
+         */
+    }
+}
+
+
+?>
