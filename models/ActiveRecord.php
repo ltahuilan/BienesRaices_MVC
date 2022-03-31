@@ -35,7 +35,7 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         if ($resultado) {
             /**query string: permite pasar cualquier tipo de valor por medio de la url */
-            header('Location: /admin/index.php?resultado=1');
+            header('Location: /admin?resultado=1');
         }
     }
 
@@ -57,7 +57,7 @@ class ActiveRecord {
 
         if($resultado) {
             /**query string: permite pasar cualquier tipo de valor por medio de la url */
-            header('Location: /admin/index.php?resultado=2');
+            header('Location: /admin?resultado=2');
         }
     }
 
@@ -74,7 +74,7 @@ class ActiveRecord {
             $resultado = self::$db->query($query);
 
             if ($resultado) {
-                header('location: /admin?resultado=3');
+                header('Location: /admin?resultado=3');
             }
         }        
     }

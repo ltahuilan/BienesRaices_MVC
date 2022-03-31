@@ -7,11 +7,12 @@ class Router {
     public $rutasGET = [];
     public $rutasPOST = [];
 
-    public function get($url, $fn) {
-        
+    public function get($url, $fn) {        
         $this->rutasGET[$url] = $fn;
+    }
 
-        // debuguear($this->rutasGET);
+    public function post($url, $fn) {
+        $this->rutasPOST[$url] = $fn;
     }
 
     //verifica que la url actual exista
@@ -21,14 +22,16 @@ class Router {
 
         if($method === 'GET') {
             $fn = $this->rutasGET[$urlActual] ?? NULL;
+        }else {
+            $fn = $this->rutasPOST[$urlActual] ?? NULL;
+        }
 
-            //la url existe y tiene una funcion asociada
-            if($fn) {
-                //requiere la funcion y el (los) arreglo de rutas
-                call_user_func($fn, $this);
-            }else {
-                echo 'ERROR 404: La página no existe...';
-            }
+        //la url existe y tiene una funcion asociada
+        if($fn) {
+            //requiere la funcion y el (los) arreglo de rutas
+            call_user_func($fn, $this);
+        }else {
+            echo 'ERROR 404: La página no existe...';
         }
     }
 
@@ -36,6 +39,8 @@ class Router {
 
         //iterar el arreglo de datos para utilizarlos en la vista
         foreach($datos as $key => $value) {
+            /**doble $$ es una variable variable, crea el nombre de la variable
+             * basado en la llave del arreglo asociativo y matiene la referencia */
             $$key = $value;
         }
 
