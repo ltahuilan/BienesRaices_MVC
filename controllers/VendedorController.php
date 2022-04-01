@@ -32,17 +32,12 @@ class VendedorController {
     }
 
     public static function actualizar(Router $router) {
-        $id = $_GET['id'];
-        $id = filter_var($id, FILTER_VALIDATE_INT);
-
-        //si no hay ningún id
-        if(!$id) {
-            header('Location: /admin');
-        }
+        
+        $errores = Vendedor::getErrores();
+        $id = validarORedireccionar('/admin');
 
         //encontrar la propiedad a eliminar
         $vendedor = Vendedor::find($id);
-        $errores = Vendedor::getErrores();
 
         if($_SERVER["REQUEST_METHOD"] == 'POST') {
     

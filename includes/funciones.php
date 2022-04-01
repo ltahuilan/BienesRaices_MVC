@@ -54,3 +54,15 @@ function mostrarAlerta($codigo) {
 
     return $mensaje;
 }
+
+function validarORedireccionar($url) {
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    //si no hay ningún id
+    if(!$id) {
+        header("Location: ${url}");
+    }
+
+    return $id;
+}

@@ -78,13 +78,15 @@ class PropiedadController {
 
     public static function actualizar(Router $router) {
         
-        //validar id de propiedad
-        $id = $_GET['id'];
-        $id = filter_var($id, FILTER_VALIDATE_INT);
+        $errores = Propiedad::getErrores();
 
+        //validar id de propiedad
+        $id = validarORedireccionar('/admin');
         $propiedad = Propiedad::find($id);
+        // if($id != $propiedad->$id) {
+        //     header('Location: /admin');
+        // }
         $vendedores = Vendedor::all();
-        $errores = $propiedad->getErrores();
 
         if($_SERVER["REQUEST_METHOD"] == 'POST') {
 

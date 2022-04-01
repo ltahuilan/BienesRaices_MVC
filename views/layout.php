@@ -17,10 +17,11 @@
 <body>
     
     <!--Si la variable $inicio esta definida agrega la cadena de texto 'inicio'-->
+    <!--técnica para mostrar la imagen del banner-->
     <header class="header <?php echo $inicio ? 'inicio' : ''?>">
         <div class="contenedor contenido-header">
             <div class="barra">
-                <a href="/index.php" class="logo">
+                <a href="/" class="logo">
                     <img src="/build/img/logo.svg" alt="Logo Bienes Raices">
                 </a>
                 
@@ -31,10 +32,10 @@
                 <div class="derecha">
                     <img src="/build/img/dark-mode.svg" alt="icono dark-mode" class="dark-mode-boton">
                     <nav class="navegacion">
-                        <a href="/nosotros.php">Nosotros</a>
-                        <a href="/anuncios.php">Anuncios</a>
-                        <a href="/blog.php">Blog</a>
-                        <a href="/contacto.php">Contacto</a>
+                        <a href="/nosotros">Nosotros</a>
+                        <a href="/anuncios">Anuncios</a>
+                        <a href="/blog">Blog</a>
+                        <a href="/contacto">Contacto</a>
                         <div class="admin">
                             <?php if($auth) : ?>
                                 <a href="/admin" class="sesion">Administrar 
@@ -57,10 +58,10 @@
     <footer class="footer">
         <div class="contenedor contenedor-footer">
             <nav class="navegacion">
-                <a href="nosotros.php">Nosotros</a>
-                <a href="anuncios.php">Anuncios</a>
-                <a href="blog.php">Blog</a>
-                <a href="contacto.php">Contacto</a>
+                <a href="nosotros">Nosotros</a>
+                <a href="anuncios">Anuncios</a>
+                <a href="blog">Blog</a>
+                <a href="contacto">Contacto</a>
             </nav>
         </div>
 

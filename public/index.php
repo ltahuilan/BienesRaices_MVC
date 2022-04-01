@@ -4,11 +4,14 @@ include_once __DIR__ . '/../includes/app.php';
 
 use Controllers\PropiedadController;
 use Controllers\VendedorController;
+use Controllers\PaginasController;
 use MVC\Router;
 
 $router = new Router();
 
 //PropiedadController::class muestra el path de la clase
+
+//rutas no publicas
 
 $router->get('/admin', [PropiedadController::class, 'index']);
 $router->get('/propiedad/crear', [PropiedadController::class, 'crear']);
@@ -22,6 +25,17 @@ $router->post('/vendedor/crear', [VendedorController::class, 'crear']);
 $router->get('/vendedor/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedor/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedor/eliminar', [VendedorController::class, 'eliminar']);
+
+
+//rutas publicas
+$router->get('/', [PaginasController::class, 'index']);
+$router->get('/nosotros', [PaginasController::class, 'nosotros']);
+$router->get('/anuncios', [PaginasController::class, 'anuncios']);
+$router->get('/anuncio', [PaginasController::class, 'anuncio']);
+$router->get('/blog', [PaginasController::class, 'blog']);
+$router->get('/entrada-blog', [PaginasController::class, 'entrada']);
+$router->get('/contacto', [PaginasController::class, 'contacto']);
+
 
 $router->comprobarRutas();
 
