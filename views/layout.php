@@ -39,9 +39,9 @@
                         <div class="admin">
                             <?php if($auth) : ?>
                                 <a href="/admin" class="sesion">Administrar 
-                                <a href="/logout.php" class="sesion">Salir</a>
+                                <a href="/logout" class="sesion">Salir</a>
                             <?php else :?>    
-                                <a href="/login.php" class="sesion">Login</a>
+                                <a href="/login" class="sesion">Login</a>
                             <?php endif; ?>
                         </div>
                     </nav>

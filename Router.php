@@ -17,6 +17,21 @@ class Router {
 
     //verifica que la url actual exista
     public function comprobarRutas() {
+
+        session_start();
+
+        $auth = $_SESSION['login'] ?? false;
+
+        $rutasProtegidas = [
+            '/admin',
+            '/propiedad/crear',
+            '/propiedad/actualizar',
+            '/propiedad/eliminar',
+            '/vendedor/crear',
+            '/vendedor/actualizar',
+            '/vendedor/eliminar'
+        ];
+
         $urlActual = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
 
@@ -24,6 +39,11 @@ class Router {
             $fn = $this->rutasGET[$urlActual] ?? NULL;
         }else {
             $fn = $this->rutasPOST[$urlActual] ?? NULL;
+        }
+
+        //si es una ruta protegida y no esta autenticado enviar a la página principal
+        if( in_array($urlActual, $rutasProtegidas) && !$auth) {            
+            header('Location: /');
         }
 
         //la url existe y tiene una funcion asociada

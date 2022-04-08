@@ -5,6 +5,7 @@ include_once __DIR__ . '/../includes/app.php';
 use Controllers\PropiedadController;
 use Controllers\VendedorController;
 use Controllers\PaginasController;
+use Controllers\LoginController;
 use MVC\Router;
 
 $router = new Router();
@@ -35,6 +36,13 @@ $router->get('/anuncio', [PaginasController::class, 'anuncio']);
 $router->get('/blog', [PaginasController::class, 'blog']);
 $router->get('/entrada-blog', [PaginasController::class, 'entrada']);
 $router->get('/contacto', [PaginasController::class, 'contacto']);
+$router->post('/contacto', [PaginasController::class, 'contacto']);
+
+//rutas login 
+$router->get('/login', [LoginController::class, 'login']);
+$router->post('/login', [LoginController::class, 'login']);
+$router->get('/logout', [LoginController::class, 'logout']);
+
 
 
 $router->comprobarRutas();

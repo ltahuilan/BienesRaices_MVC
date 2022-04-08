@@ -8,28 +8,21 @@
             <img loading="lazy" src="build/img/destacada3.jpg" alt="Imagen de contacto">
         </picture>
     </div>
+    <?php if( !is_null($alerta) ) : ?>
+        <p class="alerta correcto"><?php echo $alerta?>
+    <?php endif; ?>
 
-    <form class="formulario">
+    <form class="formulario" method="POST" action="contacto" >
         <fieldset>
             <legend>Imformaci&oacute;n Personal</legend>
             <div class="grupo">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" placeholder="Tu nombre">
-            </div>
-
-            <div class="grupo">
-                <label for="email">Email:</label>
-                <input type="mail" id="email" placeholder="Tu email">
-            </div>
-
-            <div class="grupo">
-                <label for="telefono">Telefono:</label>
-                <input type="tel" id="telefono" placeholder="Tu teléfono">
+                <input type="text" id="nombre" placeholder="Tu nombre" name="nombre" required>
             </div>
 
             <div class="grupo">
                 <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" placeholder="Escribe tu mensaje"></textarea>
+                <textarea id="mensaje" placeholder="Escribe tu mensaje" name="mensaje" ></textarea>
             </div>                
         </fieldset>
 
@@ -37,7 +30,7 @@
             <legend>Informaci&oacute;n sobre la propiedad</legend>
             <div class="grupo">
                 <label for="opciones">Vender o comprar</label>
-                <select id="opciones">
+                <select id="opciones" name="opciones" >
                     <option value="" disabled selected>-- Seleccione opción --</option>
                     <option value="comprar">Comprar</option>
                     <option value="vender">Vender</option>
@@ -46,7 +39,7 @@
 
             <div class="grupo">
                 <label for="presupuesto">Seleccione Presupuesto</label>
-                <input type="number" placeholder="Tu presupuesto o precio" id="presupuesto" min="1000000">
+                <input type="number" placeholder="Tu presupuesto o precio" id="presupuesto" min="1000000" name="presupuesto" >
             </div>
         </fieldset>
 
@@ -56,22 +49,14 @@
 
             <p>C&oacute;mo desea ser contactado</p>
             <div class="grupo contacto">
-                <label for="contacto">Teléfono</label>
-                <input type="radio" value="telefono" name="contacto" id="contacto-telefono">
+                <label for="contacto" id="contacto">Teléfono</label>
+                <input type="radio" value="telefono" name="contacto" id="contacto-telefono" >
                 <label for="contacto">E-mail</label>
                 <input type="radio" value="mail" name="contacto" id="contacto-email">
             </div>
 
-            <p>Si eligió teléfono, seleccione la fecha y la hora</p>
+            <div id="tipo-contacto" class="tipo-contacto">
 
-            <div class="grupo">
-                <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha">
-            </div>
-
-            <div class="grupo">
-                <label for="hora">Hora:</label>
-                <input type="time" id="hora" min="09:00" max="19:00">
             </div>
         </fieldset>
 

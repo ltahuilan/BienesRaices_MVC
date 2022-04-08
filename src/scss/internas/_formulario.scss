@@ -51,7 +51,20 @@
             @include boton ($verde, inline-block);
             width: auto;
         }
-    }
+    }   
 
+    // .tipo-contacto {
+    //     .grupo {
+    //         opacity: 0;
+    //         transition-property: all;
+    //         transition-duration: .1s;
+    //         transition-timing-function: ease-in-out;
+    //     }
 
+    //     &.mostrar {
+    //         .grupo {
+    //             opacity: 1;
+    //         }
+    //     }
+    // }
 }

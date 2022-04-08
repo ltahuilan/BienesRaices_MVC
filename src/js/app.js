@@ -8,19 +8,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function eventsListeners() {
     const menu = document.querySelector('.mobil-menu');
-    menu.addEventListener('click', function() {
-        const navegacion = document.querySelector('.navegacion');
+    menu.addEventListener('click', navegacionResponsive);
 
-        if(navegacion.classList.contains('mostrar')) {
-            navegacion.classList.remove('mostrar')
-        }else {
-            navegacion.classList.add('mostrar');
-        };
-
-        /**Modo corto con el método toggle */
-        // navegacion.classList.toggle('mostrar');
+    //Radio buttons
+    const contactoTipo = document.querySelectorAll('input[name="contacto"]');
+    contactoTipo.forEach(tipo => {
+        tipo.addEventListener('click', seleccionarTipo);
     });
 };
+
+function navegacionResponsive() {
+    const navegacion = document.querySelector('.navegacion');
+
+    if(navegacion.classList.contains('mostrar')) {
+        navegacion.classList.remove('mostrar')
+    }else {
+        navegacion.classList.add('mostrar');
+    };
+
+    /**Modo corto con el método toggle */
+    // navegacion.classList.toggle('mostrar');
+}
 
 function darkMode() {
 
@@ -73,8 +81,41 @@ function darkMode() {
 
 function removerAlerta() {
     const alerta = document.querySelector('.correcto');
+    if(alerta) {
+        setTimeout(() => {
+            alerta.remove();
+        }, 3500);
+    }
+}
 
-    setTimeout(() => {
-        alerta.remove();
-    }, 3500);
+
+function seleccionarTipo(event) {
+    tipoDiv = document.querySelector('#tipo-contacto');
+
+    if(event.target.value === 'telefono') {
+        tipoDiv.innerHTML = `
+            <div class="grupo">
+                <label for="telefono">Numero de telefono:</label>
+                <input type="tel" id="telefono" placeholder="Tu teléfono" name="telefono" >
+            </div>
+            <p>Seleccione la fecha y la hora para contacto</p>
+
+            <div class="grupo">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha">
+            </div>
+
+            <div class="grupo">
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" min="09:00" max="19:00" name="hora">
+            </div>
+        `;
+    }else {
+        tipoDiv.innerHTML = `            
+        <div class="grupo">
+            <label for="email">Dirección de email:</label>
+            <input type="mail" id="email" placeholder="Tu email" name="email" >
+        </div>
+        `;
+    }
 }
