@@ -5,10 +5,10 @@
  */
 
 function conectaDB() : mysqli {
-    $host = "localhost";
-    $usr = 'root';
-    $psw = 'root';
-    $db_name = 'bienes_raices';
+    $host = $_ENV['DB_HOST'];
+    $usr = $_ENV['DB_USER'];
+    $psw = $_ENV['DB_PASS'];
+    $db_name = $_ENV['DB_DB'];
 
     // $db = mysqli_connect($host, $usr, $psw, $db_name);
     $db = new mysqli($host, $usr, $psw, $db_name);

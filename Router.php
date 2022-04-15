@@ -32,7 +32,13 @@ class Router {
             '/vendedor/eliminar'
         ];
 
-        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+        $urlActual = $_SERVER['REQUEST_URI'] ?? '/';
+        //explode() separa un string a partir del caracter indicado, retorna un array de strings
+        $urlActual = explode('?', $urlActual);
+        //extraer el primer elemento de un array, se almacena en una variable como string
+        $urlActual = array_shift($urlActual);
+        // debuguear($urlActual);
+
         $method = $_SERVER['REQUEST_METHOD'];
 
         if($method === 'GET') {

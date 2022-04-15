@@ -4,4 +4,11 @@ node_modules/
 #descartar carpeta vendor de composer
 vendor/
 
+#ignorar solo para el DEPLOYMENT
+.env
 gulpfile.js
+package-lock.json
+package.json
+.DS_Store
+
+
