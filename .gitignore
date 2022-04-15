@@ -5,6 +5,7 @@ node_modules/
 vendor/
 
 #ignorar solo para el DEPLOYMENT
+src/
 .env
 gulpfile.js
 package-lock.json
