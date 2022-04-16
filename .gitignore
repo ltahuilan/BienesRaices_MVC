@@ -4,7 +4,7 @@ node_modules/
 #descartar carpeta vendor de composer
 vendor/
 
-#ignorar solo para el DEPLOYMENT
+#solo para el DEPLOYMENT
 src/
 .env
 gulpfile.js
